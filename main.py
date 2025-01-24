@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import koreanize_matplotlib
 
 # 데이터 경로
 DATA_PATH = "daily_temp.csv"
@@ -29,10 +30,10 @@ month_data = data[data['월'] == selected_month]
 
 # 박스플롯 그리기
 if not month_data.empty:
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(8, 5))  # 그래프 크기 조정
     ax.boxplot(month_data['평균기온(℃)'], vert=True, patch_artist=True, labels=[f"{selected_month}월"])
-    ax.set_title(f"{selected_month}월의 평균 기온 분포")
-    ax.set_ylabel("기온 (℃)")
-    st.pyplot(fig)
+    ax.set_title(f"{selected_month}월의 평균 기온 분포", fontsize=14)
+    ax.set_ylabel("기온 (℃)", fontsize=12)
+    st.pyplot(fig)  # Streamlit에서 그래프 출력
 else:
     st.warning("선택한 월에 해당하는 데이터가 없습니다.")
