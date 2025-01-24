@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 DATA_PATH = "daily_temp.csv"
 
 # 데이터 로드 및 전처리
-@st.cache
+@st.cache_data
 def load_data(path):
     data = pd.read_csv(path)
     # 날짜 열 이름 정리 및 날짜 형식 변환
